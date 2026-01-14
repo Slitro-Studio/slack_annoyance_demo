@@ -13,8 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    border-color: black;
-    border-width: 2px;
+    background-color: slategrey;
     overflow: hidden;
 }
 
@@ -47,6 +46,7 @@ input {
     padding: 10px;
     border: none;
     outline: none;
+    background-color: paleturquoise;
 }
 
 button {
