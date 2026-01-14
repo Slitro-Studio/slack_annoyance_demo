@@ -36,6 +36,11 @@ body {
     text-align: left;
 }
 
+#chat-header {
+    padding-left: 5%;
+    color: whitesmoke;
+}
+
 form {
     display: flex;
     border-top: 1px solid #1e293b;
