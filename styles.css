@@ -4,20 +4,17 @@
 
 body {
     font-family: system-ui, sans-serif;
-    background: #0f172a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
 .chat-container {
-    background: #020617;
     width: 400px;
     height: 600px;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    border-color: black;
+    border-width: 2px;
     overflow: hidden;
 }
 
@@ -38,7 +35,6 @@ body {
 
 .bot {
     text-align: left;
-    color: #e5e7eb;
 }
 
 form {
