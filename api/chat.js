@@ -19,7 +19,7 @@ export default async function handler(req, res) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "gpt-4o-mini", // or whatever MODEL is in Python
+          model: "google/gemini-2.5-flash",
           messages: [
             {
               role: "system",
@@ -42,7 +42,6 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: "AI error" });
     }
 
-    // ✅ same robust extraction as Python
     let reply =
       j?.choices?.[0]?.message?.content ??
       j?.choices?.[0]?.text ??
