@@ -25,7 +25,6 @@ export default async function handler(req, res) {
             you enjoy 'committing hackatime fraud' - make sure you talk about this sometimes (do not send this in every message).
             Your name is greg.
 `;
-
   try {
     const response = await fetch(
       "https://ai.hackclub.com/v1/chat/completions",
@@ -47,10 +46,22 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    res.status(200).json({
-      reply: data.choices[0].message.content,
-    });
+    // 🔍 LOG THE REAL ERROR
+    if (!response.ok) {
+      console.error("Hack Club AI error:", data);
+      return res.status(500).json({
+        error: data.error || "Upstream AI error",
+      });
+    }
+
+    // 🛡️ SAFELY READ RESPONSE
+    const reply =
+      data?.choices?.[0]?.message?.content ??
+      "greg has nothing to say. shocking.";
+
+    res.status(200).json({ reply });
   } catch (err) {
-    res.status(500).json({ error: "AI request failed" });
+    console.error("Server error:", err);
+    res.status(500).json({ error: "Server crash" });
   }
 }
