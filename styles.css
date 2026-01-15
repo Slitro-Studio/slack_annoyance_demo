@@ -1,62 +1,118 @@
-#pfp {
-    width: 7rem;
-}
-
 body {
     font-family: system-ui, sans-serif;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #999;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+
+h1 {
+    color: #ccc;
+    font-size: 18px;
+    margin: 0 0 30px 0;
+    width: 100%;
+    max-width: 1200px;
+}
+
+#pfp {
+    display: none;
 }
 
 .chat-container {
-    width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
     height: 600px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    background-color: slategrey;
-    overflow: hidden;
+}
+
+#chat-header {
+    display: none;
 }
 
 #chat {
-    flex: 1;
-    padding: 10px;
+    grid-column: 1;
+    background-color: #444;
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 16px;
     overflow-y: auto;
 }
 
 .message {
-    margin-bottom: 10px;
+    grid-column: 2;
+    background-color: #ddd;
+    padding: 30px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: block;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.message:hover {
+    background-color: #ccc;
 }
 
 .user {
-    text-align: right;
-    color: #38bdf8;
+    text-align: center;
 }
 
-.bot {
-    text-align: left;
+.user p {
+    background-color: transparent;
+    color: #333;
+    padding: 0;
+    margin: 0;
+    display: block;
+    max-width: 100%;
 }
 
-#chat-header {
-    padding-left: 5%;
-    color: whitesmoke;
+.bot p {
+    background-color: transparent;
+    color: #333;
+    padding: 0;
+    margin: 0;
+    display: block;
+    max-width: 100%;
 }
 
 form {
-    display: flex;
-    border-top: 1px solid #1e293b;
+    display: none;
 }
 
 input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    outline: none;
-    background-color: paleturquoise;
+    display: none;
 }
 
 button {
-    background: #38bdf8;
-    border: none;
-    padding: 0 15px;
-    cursor: pointer;
+    display: none;
 }
