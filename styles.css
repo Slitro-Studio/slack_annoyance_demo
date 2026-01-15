@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 nav {
@@ -29,9 +30,8 @@ nav a {
 h1 {
     color: #ccc;
     font-size: 18px;
-    margin: 0 0 30px 0;
-    width: 100%;
-    max-width: 1200px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 #pfp {
@@ -39,80 +39,129 @@ h1 {
 }
 
 .chat-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
     width: 100%;
-    max-width: 1200px;
-    height: 600px;
-}
-
-#chat-header {
-    display: none;
-}
-
-#chat {
-    grid-column: 1;
-    background-color: #444;
-    border-radius: 8px;
-    padding: 30px;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-    font-size: 16px;
-    overflow-y: auto;
+    gap: 15px;
 }
 
-.message {
-    grid-column: 2;
+.demo-button {
     background-color: #ddd;
-    padding: 30px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    display: block;
-    color: #333;
-    text-align: center;
-    cursor: pointer;
     border: none;
+    color: #333;
+    padding: 25px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
     transition: background-color 0.2s;
 }
 
-.message:hover {
+.demo-button:hover {
     background-color: #ccc;
 }
 
-.user {
-    text-align: center;
+.demo-page {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
 }
 
-.user p {
-    background-color: transparent;
-    color: #333;
-    padding: 0;
-    margin: 0;
+.demo-page #chat {
+    background-color: #444;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    height: 600px;
+}
+
+.demo-page .message {
+    background-color: #555;
+    padding: 12px 16px;
+    border-radius: 4px;
     display: block;
-    max-width: 100%;
+    color: #ccc;
+    text-align: left;
+    word-wrap: break-word;
+    font-size: 14px;
+    cursor: auto;
 }
 
-.bot p {
-    background-color: transparent;
-    color: #333;
-    padding: 0;
+.demo-page .user {
+    text-align: right;
+}
+
+.demo-page .user p {
+    background-color: #0084ff;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
     margin: 0;
-    display: block;
-    max-width: 100%;
 }
 
-form {
-    display: none;
+.demo-page .bot p {
+    background-color: #555;
+    color: #ccc;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 0;
 }
 
-input {
-    display: none;
+.demo-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-button {
-    display: none;
+.demo-page input {
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    background-color: #333;
+    color: #ccc;
+}
+
+.demo-page input:focus {
+    border-color: #777;
+}
+
+.demo-page button[type="submit"] {
+    background-color: #0084ff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.demo-page button[type="submit"]:hover {
+    background-color: #0073e6;
+}
+
+.back-button {
+    background-color: #666;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.back-button:hover {
+    background-color: #777;
 }
