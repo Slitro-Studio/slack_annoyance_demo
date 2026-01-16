@@ -244,6 +244,13 @@ h1 {
     color: #b4befe;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+.lastfm-thread-message {
+    font-family: Lato, sans-serif;
+    color: #fff;
+}
+
 footer {
     width: 100%;
     text-align: center;
@@ -295,7 +302,8 @@ footer a:hover {
 }
 
 @keyframes bob {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0px);
     }
     50% {
@@ -486,7 +494,8 @@ footer a:hover {
         opacity: 1;
     }
     100% {
-        transform: translateX(-300px) scale(0) rotate(var(--rotation, 0deg) - 45deg);
+        transform: translateX(-300px) scale(0)
+            rotate(var(--rotation, 0deg) - 45deg);
         opacity: 0;
     }
 }
@@ -497,7 +506,8 @@ footer a:hover {
         opacity: 1;
     }
     100% {
-        transform: translateX(300px) scale(0) rotate(var(--rotation, 0deg) + 45deg);
+        transform: translateX(300px) scale(0)
+            rotate(var(--rotation, 0deg) + 45deg);
         opacity: 0;
     }
 }
