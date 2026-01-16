@@ -6,20 +6,6 @@
         <link rel="icon" href="./assets/annoyance.png" />
     </head>
     <body>
-        <nav>
-            <a href="index.html">Home</a>
-            <a
-                target="_blank"
-                href="https://github.com/heycastawhat/slack-annoyance"
-                >GitHub</a
-            >
-            <a
-                target="_blank"
-                href="https://hackclub.enterprise.slack.com/archives/C0A1TJJTT8U"
-                >Slack Channel (13-18 Only)</a
-            >
-        </nav>
-
         <main>
             <div class="about-container">
                 <img
@@ -33,6 +19,8 @@
                         Slack Annoyance is a multi-purpose slack bot (<img
                             src="https://emoji.slack-edge.com/T09V59WQY1E/bonk/778eeedea12ce134.png"
                             width="20px"
+                            class="bonk-emoji"
+                            onclick="showPopup()"
                         />
                         bonk! what'd ya want from me) It includes Greg, the
                         sarcastic ai, Geoff, the rambling fun ai, last.fm live
@@ -44,5 +32,97 @@
                 </div>
             </div>
         </main>
+        <div id="popup-container"></div>
+        <script>
+            let clickCount = 0;
+            const slackbotImages = [
+                './slackbot/slackbot....png',
+                './slackbot/ahh slackbot.png',
+                './slackbot/why is slackbot here.png',
+                './slackbot/slackbot its time.png',
+                './slackbot/free slackbot.png'
+            ];
+            
+            function removePopup(popup, container) {
+                const animations = ['fade-out', 'pop-out-left', 'pop-out-right', 'pop-out-up', 'pop-out-down', 'pop-out-spin'];
+                const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                popup.classList.add(randomAnimation);
+                setTimeout(() => {
+                    if (container.contains(popup)) {
+                        container.removeChild(popup);
+                    }
+                }, 400);
+            }
+            
+            function createPopup(delay = 0) {
+                setTimeout(() => {
+                    const container = document.getElementById('popup-container');
+                    const popup = document.createElement('img');
+                    
+                    // Random image selection
+                    const randomImage = slackbotImages[Math.floor(Math.random() * slackbotImages.length)];
+                    popup.src = randomImage;
+                    
+                    // Random opening animation
+                    const openingAnimations = ['popup-image', 'popup-image-spin', 'popup-image-bounce', 'popup-image-slide'];
+                    const randomOpening = openingAnimations[Math.floor(Math.random() * openingAnimations.length)];
+                    popup.classList.add(randomOpening);
+                    
+                    // Random size between 200px and 500px
+                    const randomSize = 200 + Math.random() * 300;
+                    popup.style.width = randomSize + 'px';
+                    
+                    // Random position
+                    const maxX = window.innerWidth - randomSize;
+                    const maxY = window.innerHeight - randomSize;
+                    const randomX = Math.random() * Math.max(0, maxX);
+                    const randomY = Math.random() * Math.max(0, maxY);
+                    
+                    popup.style.left = randomX + 'px';
+                    popup.style.top = randomY + 'px';
+                    
+                    // Random rotation
+                    const randomRotation = (Math.random() - 0.5) * 30;
+                    popup.style.setProperty('--rotation', randomRotation + 'deg');
+                    
+                    // 30% chance to stay on screen indefinitely
+                    const staysOnScreen = Math.random() < 0.3;
+                    
+                    // Make popup clickable to remove
+                    popup.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        removePopup(popup, container);
+                    });
+                    
+                    container.appendChild(popup);
+                    
+                    // Auto-remove after 2 seconds only if not staying on screen
+                    if (!staysOnScreen) {
+                        setTimeout(() => {
+                            if (container.contains(popup)) {
+                                removePopup(popup, container);
+                            }
+                        }, 2000);
+                    }
+                }, delay);
+            }
+            
+            function showPopup() {
+                clickCount++;
+                
+                if (clickCount >= 10) {
+                    // STORM TIME!
+                    for (let i = 0; i < 20; i++) {
+                        createPopup(i * 50);
+                    }
+                    clickCount = 0;
+                } else {
+                    createPopup();
+                }
+            }
+        </script>
+        <footer>
+            <a href="index.html" class="back-button">← Back</a>
+        </footer>
     </body>
 </html>
