@@ -1,12 +1,146 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Last.fm Demo - Slack Annoyance</title>
         <link rel="stylesheet" href="styles.css" />
         <link rel="icon" href="./assets/annoyance.png" />
         <script defer src="index.js"></script>
+        <style>
+            .slack-thread {
+                background-color: #1a1d21;
+                border-radius: 8px;
+                max-width: 600px;
+                width: 100%;
+                padding: 12px 16px;
+                font-family:
+                    "Lato",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    sans-serif;
+            }
+
+            .slack-message {
+                display: flex;
+                gap: 12px;
+                padding: 8px 0;
+            }
+
+            .slack-avatar {
+                width: 36px;
+                height: 36px;
+                border-radius: 4px;
+                flex-shrink: 0;
+            }
+
+            .slack-message-content {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .slack-message-header {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 4px;
+            }
+
+            .slack-username {
+                font-weight: 900;
+                color: #e8e8e8;
+                font-size: 15px;
+            }
+
+            .slack-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 3px;
+            }
+
+            .slack-badge-app {
+                background-color: #44484d;
+                color: #b9bbbe;
+                font-size: 10px;
+                font-weight: 700;
+                padding: 2px 5px;
+                border-radius: 3px;
+                text-transform: uppercase;
+            }
+
+            .slack-timestamp {
+                color: #9b9d9f;
+                font-size: 12px;
+            }
+
+            .slack-message-text {
+                color: #e8e8e8;
+                font-size: 15px;
+                line-height: 1.46;
+                word-wrap: break-word;
+            }
+
+            .slack-mention {
+                color: #1d9bd1;
+                background-color: rgba(29, 155, 209, 0.1);
+                padding: 0 2px;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            .slack-mention:hover {
+                background-color: rgba(29, 155, 209, 0.2);
+            }
+
+            .slack-bold {
+                font-weight: 700;
+                color: #e8e8e8;
+            }
+
+            .slack-replies {
+                color: #1d9bd1;
+                font-size: 13px;
+                padding: 6px 0;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+
+            .slack-replies:hover {
+                text-decoration: underline;
+            }
+
+            .slack-thread-line {
+                border: none;
+                border-left: 2px solid #3b3d40;
+                margin: 0 0 0 17px;
+                height: 12px;
+            }
+
+            .slack-attachment {
+                margin-top: 8px;
+            }
+
+            .slack-attachment-size {
+                color: #9b9d9f;
+                font-size: 12px;
+                margin-bottom: 4px;
+                cursor: pointer;
+            }
+
+            .slack-attachment-size::after {
+                content: " ▾";
+                font-size: 10px;
+            }
+
+            .slack-attachment-image {
+                max-width: 250px;
+                border-radius: 8px;
+                display: block;
+            }
+        </style>
     </head>
     <body>
         <nav>
@@ -28,17 +162,59 @@
             listening to in their personal channels!
         </p>
 
-        <div class="lastfm-thread">
-            <p class="lastfm-thread-message">
-                @Kyle B started a listening session, time to judge his music
-                taste :loll:
-            </p>
-            <hr class="lastfm-thread-line" />
-            <p class="lastfm-thread-message">
-                Really? You’re seriously listening to Lavish by Twenty One
-                Pilots in 2026?
-            </p>
+        <div class="slack-thread">
+            <div class="slack-message">
+                <img
+                    src="./assets/annoyance.png"
+                    alt="Slack Annoyance"
+                    class="slack-avatar"
+                />
+                <div class="slack-message-content">
+                    <div class="slack-message-header">
+                        <span class="slack-username">Slack Annoyance</span>
+                        <span class="slack-badge">
+                            <span class="slack-badge-app">APP</span>
+                        </span>
+                        <span class="slack-timestamp">Today at 8:34 AM</span>
+                    </div>
+                    <div class="slack-message-text">
+                        <span class="slack-mention">@Kyle B</span> started a
+                        listening session, time to judge his music taste
+                        <img
+                            alt="loll"
+                            src="https://emoji.slack-edge.com/T09V59WQY1E/loll/d8699d45d71dbd44.gif"
+                            width="20px"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <div class="slack-replies">6 replies</div>
+
+            <div class="slack-message">
+                <img
+                    src="./assets/annoyance.png"
+                    alt="Slack Annoyance"
+                    class="slack-avatar"
+                />
+                <div class="slack-message-content">
+                    <div class="slack-message-header">
+                        <span class="slack-username">Slack Annoyance</span>
+                        <span class="slack-badge">
+                            <span class="slack-badge-app">APP</span>
+                        </span>
+                        <span class="slack-timestamp">Today at 8:34 AM</span>
+                    </div>
+                    <div class="slack-message-text">
+                        Really? You're seriously listening to
+                        <span class="slack-bold">Lavish</span> by
+                        <span class="slack-bold">Twenty One Pilots</span> in
+                        2026?
+                    </div>
+                </div>
+            </div>
         </div>
+
         <footer>
             <a href="index.html" class="back-button">← Back</a>
         </footer>
