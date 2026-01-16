@@ -19,7 +19,7 @@
                         Slack Annoyance is a multi-purpose slack bot (<img
                             src="https://emoji.slack-edge.com/T09V59WQY1E/bonk/778eeedea12ce134.png"
                             width="20px"
-                            style="cursor: pointer;"
+                            class="bonk-emoji"
                             onclick="showPopup()"
                         />
                         bonk! what'd ya want from me) It includes Greg, the
@@ -35,12 +35,22 @@
         <div id="popup-container"></div>
         <script>
             let clickCount = 0;
+            const slackbotImages = [
+                './slackbot/slackbot....png',
+                './slackbot/ahh slackbot.png',
+                './slackbot/why is slackbot here.png',
+                './slackbot/slackbot its time.png',
+                './slackbot/free slackbot.png'
+            ];
             
             function createPopup(delay = 0) {
                 setTimeout(() => {
                     const container = document.getElementById('popup-container');
                     const popup = document.createElement('img');
-                    popup.src = './assets/why is slackbot here.png';
+                    
+                    // Random image selection
+                    const randomImage = slackbotImages[Math.floor(Math.random() * slackbotImages.length)];
+                    popup.src = randomImage;
                     popup.className = 'popup-image';
                     
                     // Random size between 200px and 500px

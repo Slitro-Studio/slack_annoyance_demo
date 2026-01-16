@@ -277,6 +277,32 @@ footer a:hover {
     border-radius: 15px;
 }
 
+.bonk-emoji {
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s ease;
+    filter: drop-shadow(0 0 4px rgba(137, 180, 250, 0.5));
+    animation: bob 1.5s ease-in-out infinite;
+}
+
+.bonk-emoji:hover {
+    transform: scale(1.3) rotate(10deg);
+    filter: drop-shadow(0 0 8px rgba(137, 180, 250, 0.8)) brightness(1.2);
+}
+
+.bonk-emoji:active {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+@keyframes bob {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
 #popup-container {
     position: fixed;
     top: 0;
