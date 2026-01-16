@@ -1,6 +1,7 @@
 body {
     font-family: system-ui, sans-serif;
     min-height: 100vh;
+    height: 100vh;
     background-color: #1e1e2e;
     margin: 0;
     padding: 20px;
@@ -9,6 +10,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
+    overflow-y: auto;
 }
 
 h3 {
@@ -101,6 +103,8 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1;
+    overflow: hidden;
 }
 
 .demo-page #chat {
@@ -112,8 +116,16 @@ h1 {
     flex-direction: column;
     gap: 15px;
     overflow-y: auto;
-    min-height: 250px;
-    max-height: 800px;
+    flex: 1;
+    min-height: 300px;
+}
+
+.demo-page > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    min-height: 0;
 }
 
 .demo-page .message {
@@ -153,8 +165,9 @@ h1 {
 
 .demo-page form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
+    align-items: stretch;
 }
 
 .demo-page input {
@@ -165,6 +178,7 @@ h1 {
     font-size: 14px;
     background-color: #313244;
     color: #cdd6f4;
+    flex: 1;
 }
 
 .demo-page input:focus {
@@ -175,11 +189,13 @@ h1 {
     background-color: #89b4fa;
     border: none;
     color: #1e1e2e;
-    padding: 10px 20px;
+    padding: 10px 24px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .demo-page button[type="submit"]:hover {
@@ -532,5 +548,197 @@ footer a:hover {
     100% {
         transform: scale(0) rotate(var(--rotation, 0deg) + 720deg);
         opacity: 0;
+    }
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-top: 40px;
+    }
+
+    h3 {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    nav {
+        position: static;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .logo {
+        width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .chat-container {
+        gap: 20px;
+    }
+
+    .demo-button {
+        min-width: unset;
+        width: 100%;
+        padding: 40px 30px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .demo-page {
+        max-width: 100%;
+    }
+
+    .demo-page > div {
+        gap: 15px;
+    }
+
+    .demo-page #chat {
+        padding: 15px;
+        min-height: 200px;
+        max-height: 500px;
+    }
+
+    .demo-page .message {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+    .demo-page form {
+        gap: 8px;
+    }
+
+    .demo-page input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .demo-page button[type="submit"] {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    .text {
+        font-size: 1rem;
+        padding: 20px;
+    }
+
+    .about-container {
+        padding: 0 10px;
+    }
+
+    .about-content {
+        padding: 20px;
+    }
+
+    .about-content p {
+        font-size: 16px;
+    }
+
+    .about-content h2 {
+        font-size: 20px;
+    }
+
+    .popup-image,
+    .popup-image-spin,
+    .popup-image-bounce,
+    .popup-image-slide {
+        width: 200px;
+        max-width: 80vw;
+    }
+
+    footer {
+        font-size: 16px;
+        padding: 20px 10px;
+        margin-top: 0;
+    }
+
+    .back-button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+        margin-top: 30px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .chat-container {
+        gap: 18px;
+    }
+
+    .demo-button {
+        padding: 35px 25px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .demo-page #chat {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .demo-page .message {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    .text {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+
+    .about-content {
+        padding: 15px;
+    }
+
+    .about-content p {
+        font-size: 14px;
+    }
+
+    .about-content h2 {
+        font-size: 18px;
+    }
+
+    .popup-image,
+    .popup-image-spin,
+    .popup-image-bounce,
+    .popup-image-slide {
+        width: 150px;
+    }
+
+    footer {
+        font-size: 14px;
     }
 }
