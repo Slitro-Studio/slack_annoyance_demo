@@ -58,7 +58,9 @@ h1 {
     margin: 0 auto 30px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .logo:hover {
@@ -256,4 +258,17 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+.text {
+    color: #fff;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    margin: 5;
+    padding: 40px;
+}
+
+.about-text-box {
+    background-color: #999;
+    border-radius: 15px;
 }
