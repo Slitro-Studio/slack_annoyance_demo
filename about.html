@@ -6,20 +6,6 @@
         <link rel="icon" href="./assets/annoyance.png" />
     </head>
     <body>
-        <nav>
-            <a href="index.html">Home</a>
-            <a
-                target="_blank"
-                href="https://github.com/heycastawhat/slack-annoyance"
-                >GitHub</a
-            >
-            <a
-                target="_blank"
-                href="https://hackclub.enterprise.slack.com/archives/C0A1TJJTT8U"
-                >Slack Channel (13-18 Only)</a
-            >
-        </nav>
-
         <main>
             <div class="about-container">
                 <img
@@ -33,6 +19,8 @@
                         Slack Annoyance is a multi-purpose slack bot (<img
                             src="https://emoji.slack-edge.com/T09V59WQY1E/bonk/778eeedea12ce134.png"
                             width="20px"
+                            style="cursor: pointer;"
+                            onclick="showPopup()"
                         />
                         bonk! what'd ya want from me) It includes Greg, the
                         sarcastic ai, Geoff, the rambling fun ai, last.fm live
@@ -44,5 +32,63 @@
                 </div>
             </div>
         </main>
+        <div id="popup-container"></div>
+        <script>
+            let clickCount = 0;
+            
+            function createPopup(delay = 0) {
+                setTimeout(() => {
+                    const container = document.getElementById('popup-container');
+                    const popup = document.createElement('img');
+                    popup.src = './assets/why is slackbot here.png';
+                    popup.className = 'popup-image';
+                    
+                    // Random size between 200px and 500px
+                    const randomSize = 200 + Math.random() * 300;
+                    popup.style.width = randomSize + 'px';
+                    
+                    // Random position
+                    const maxX = window.innerWidth - randomSize;
+                    const maxY = window.innerHeight - randomSize;
+                    const randomX = Math.random() * Math.max(0, maxX);
+                    const randomY = Math.random() * Math.max(0, maxY);
+                    
+                    popup.style.left = randomX + 'px';
+                    popup.style.top = randomY + 'px';
+                    
+                    // Random rotation
+                    const randomRotation = (Math.random() - 0.5) * 30;
+                    popup.style.setProperty('--rotation', randomRotation + 'deg');
+                    
+                    container.appendChild(popup);
+                    
+                    setTimeout(() => {
+                        popup.classList.add('fade-out');
+                        setTimeout(() => {
+                            if (container.contains(popup)) {
+                                container.removeChild(popup);
+                            }
+                        }, 400);
+                    }, 2000);
+                }, delay);
+            }
+            
+            function showPopup() {
+                clickCount++;
+                
+                if (clickCount >= 10) {
+                    // STORM TIME!
+                    for (let i = 0; i < 20; i++) {
+                        createPopup(i * 50);
+                    }
+                    clickCount = 0;
+                } else {
+                    createPopup();
+                }
+            }
+        </script>
+        <footer>
+            <a href="index.html" class="back-button">← Back</a>
+        </footer>
     </body>
 </html>
