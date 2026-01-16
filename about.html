@@ -43,6 +43,17 @@
                 './slackbot/free slackbot.png'
             ];
             
+            function removePopup(popup, container) {
+                const animations = ['fade-out', 'pop-out-left', 'pop-out-right', 'pop-out-up', 'pop-out-down', 'pop-out-spin'];
+                const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                popup.classList.add(randomAnimation);
+                setTimeout(() => {
+                    if (container.contains(popup)) {
+                        container.removeChild(popup);
+                    }
+                }, 400);
+            }
+            
             function createPopup(delay = 0) {
                 setTimeout(() => {
                     const container = document.getElementById('popup-container');
@@ -51,7 +62,11 @@
                     // Random image selection
                     const randomImage = slackbotImages[Math.floor(Math.random() * slackbotImages.length)];
                     popup.src = randomImage;
-                    popup.className = 'popup-image';
+                    
+                    // Random opening animation
+                    const openingAnimations = ['popup-image', 'popup-image-spin', 'popup-image-bounce', 'popup-image-slide'];
+                    const randomOpening = openingAnimations[Math.floor(Math.random() * openingAnimations.length)];
+                    popup.classList.add(randomOpening);
                     
                     // Random size between 200px and 500px
                     const randomSize = 200 + Math.random() * 300;
@@ -70,16 +85,25 @@
                     const randomRotation = (Math.random() - 0.5) * 30;
                     popup.style.setProperty('--rotation', randomRotation + 'deg');
                     
+                    // 30% chance to stay on screen indefinitely
+                    const staysOnScreen = Math.random() < 0.3;
+                    
+                    // Make popup clickable to remove
+                    popup.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        removePopup(popup, container);
+                    });
+                    
                     container.appendChild(popup);
                     
-                    setTimeout(() => {
-                        popup.classList.add('fade-out');
+                    // Auto-remove after 2 seconds only if not staying on screen
+                    if (!staysOnScreen) {
                         setTimeout(() => {
                             if (container.contains(popup)) {
-                                container.removeChild(popup);
+                                removePopup(popup, container);
                             }
-                        }, 400);
-                    }, 2000);
+                        }, 2000);
+                    }
                 }, delay);
             }
             

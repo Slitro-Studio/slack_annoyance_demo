@@ -325,12 +325,71 @@ footer a:hover {
     transition: transform 0.2s ease;
 }
 
-.popup-image:hover {
+.popup-image-spin {
+    position: fixed;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    animation: popInSpin 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.popup-image-bounce {
+    position: fixed;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    animation: popInBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.popup-image-slide {
+    position: fixed;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    animation: popInSlide 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.popup-image:hover,
+.popup-image-spin:hover,
+.popup-image-bounce:hover,
+.popup-image-slide:hover {
     transform: scale(1.05) rotate(var(--rotation, 0deg));
 }
 
 .popup-image.fade-out {
     animation: popOut 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+.popup-image.pop-out-left {
+    animation: popOutLeft 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+.popup-image.pop-out-right {
+    animation: popOutRight 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+.popup-image.pop-out-up {
+    animation: popOutUp 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+.popup-image.pop-out-down {
+    animation: popOutDown 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+.popup-image.pop-out-spin {
+    animation: popOutSpin 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
 }
 
 @keyframes fadeIn {
@@ -365,6 +424,51 @@ footer a:hover {
     }
 }
 
+@keyframes popInSpin {
+    0% {
+        transform: scale(0) rotate(var(--rotation, 0deg) - 180deg);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.15) rotate(var(--rotation, 0deg) + 90deg);
+    }
+    100% {
+        transform: scale(1) rotate(var(--rotation, 0deg));
+        opacity: 1;
+    }
+}
+
+@keyframes popInBounce {
+    0% {
+        transform: scale(0) translateY(100px);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) translateY(-20px);
+    }
+    75% {
+        transform: scale(0.95) translateY(5px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popInSlide {
+    0% {
+        transform: scale(0.5) translateX(-200px);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1) translateX(20px);
+    }
+    100% {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+    }
+}
+
 @keyframes popOut {
     0% {
         transform: scale(1) rotate(var(--rotation, 0deg));
@@ -372,6 +476,61 @@ footer a:hover {
     }
     100% {
         transform: scale(0) rotate(var(--rotation, 0deg));
+        opacity: 0;
+    }
+}
+
+@keyframes popOutLeft {
+    0% {
+        transform: translateX(0) scale(1) rotate(var(--rotation, 0deg));
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-300px) scale(0) rotate(var(--rotation, 0deg) - 45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes popOutRight {
+    0% {
+        transform: translateX(0) scale(1) rotate(var(--rotation, 0deg));
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(300px) scale(0) rotate(var(--rotation, 0deg) + 45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes popOutUp {
+    0% {
+        transform: translateY(0) scale(1) rotate(var(--rotation, 0deg));
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-300px) scale(0) rotate(var(--rotation, 0deg));
+        opacity: 0;
+    }
+}
+
+@keyframes popOutDown {
+    0% {
+        transform: translateY(0) scale(1) rotate(var(--rotation, 0deg));
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(300px) scale(0) rotate(var(--rotation, 0deg));
+        opacity: 0;
+    }
+}
+
+@keyframes popOutSpin {
+    0% {
+        transform: scale(1) rotate(var(--rotation, 0deg));
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) rotate(var(--rotation, 0deg) + 720deg);
         opacity: 0;
     }
 }
